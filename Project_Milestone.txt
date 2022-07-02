@@ -1,0 +1,30 @@
+1. Milestone 1: [ Duration: 2 weeks, Score: 20 points]
+‣ Input: Interim report
+‣ Process: [ 15 points ]
+‣ Step 1: Import the data
+‣ Step 2: Map training and testing images to its classes.
+‣ Step 3: Map training and testing images to its annotations.
+‣ Step 4: Display images with bounding box
+‣ Output: Images mapped to its class and annotation ready to be used for deep learning
+‣ Submission: Interim report 1 [ 5 points ]
+
+2. Milestone 2: [ Duration: 2 weeks, Score: 20 points]
+‣ Input: Output of milestone 1
+‣ Process: [ 15 points ]
+‣ Step 1: Design, train and test CNN models to classify the car. [ 5 points ]
+‣ Step 2: Design, train and test RCNN & its hybrids based object detection models to impose the bounding box or
+mask over the area of interest. [ 8 points ]
+‣ Output: Pickled model to be used for future prediction [ 2 points ]
+‣ Submission: Interim report 2 [ 5 points ]
+
+3. Milestone 3: [ Duration: 2 weeks, Score: 20 points]
+‣ Input: Pickled model from milestone 2
+‣ Process:
+‣ Step 1: Design a clickable UI which can automate tasks performed under milestone 1 [ 5 points ]
+‣ Step 2: Design a clickable UI which can automate tasks performed under milestone 2 [ 5 points ]
+‣ Step 3: Design a clickable UI based interface which can allow the user to browse & input the image, output the
+class and the bounding box or mask [ highlight area of interest ] of the input image [ 5 points ]
+‣ Output: Clickable UI based interface
+‣ Submission: Final report [ 5 points ]
+
+
