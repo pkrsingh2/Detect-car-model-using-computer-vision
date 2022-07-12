@@ -89,9 +89,6 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 from sklearn.preprocessing import LabelBinarizer
 
-import matplotlib.pyplot as plt
-import seaborn as sns
-
 # read the car/class names
 carsMaster = pd.read_csv("Car names and make.csv",header=None)
 carsMaster.columns=["fullNames"]
@@ -188,7 +185,7 @@ for cls in tqdm(carsMaster.fullNames,desc="imScanTrain"):
         imPath = np.append(imPath,np.array([path+cls+'/'+img]))
         fldrName = np.append(fldrName,np.array([cls]))
         imageName = np.append(imageName,np.array([img]))
-        (h,w) = Image.open(path+cls+'/'+img).size
+        (w,h) = Image.open(path+cls+'/'+img).size
         imH = np.append(imH,np.array([h]))
         imW = np.append(imW,np.array([w]))
 imageMasterTrain["Image"] = imageName
@@ -216,7 +213,7 @@ for cls in tqdm(carsMaster.fullNames,desc="imScanTest"):
         imPath = np.append(imPath,np.array([path+cls+'/'+img]))
         fldrName = np.append(fldrName,np.array([cls]))
         imageName = np.append(imageName,np.array([img]))
-        (h,w) = Image.open(path+cls+'/'+img).size
+        (w,h) = Image.open(path+cls+'/'+img).size
         imH = np.append(imH,np.array([h]))
         imW = np.append(imW,np.array([w]))
 imageMasterTest["Image"] = imageName
@@ -264,15 +261,6 @@ testDF = testDF[["Image","ImagePath",'x1','y1','x2','y2','height','width',"folde
 
 trainDF.columns = ["Image","ImagePath",'x1','y1','x2','y2','height','width',"folderName","Image_class","OEM","MODEL","TYPE","YEAR"]
 testDF.columns = ["Image","ImagePath",'x1','y1','x2','y2','height','width',"folderName","Image_class","OEM","MODEL","TYPE","YEAR"]
-
-# lest encode the classes into binaries
-enc = LabelBinarizer()
-trainDF["classEncoded"] = list(enc.fit_transform(trainDF.Image_class.values.reshape(-1, 1)))
-testDF["classEncoded"] = list(enc.transform(testDF.Image_class.values.reshape(-1, 1)))
-
-# concatenate target columns (for ImageDatagenerator)
-trainDF["bBox"] = trainDF.apply(lambda row: [row.x1,row.y1,row.x2,row.y2],axis=1).values.copy()
-testDF["bBox"] = testDF.apply(lambda row: [row.x1,row.y1,row.x2,row.y2],axis=1).values.copy()
 
 # All the data preprocessing & compilation have been completed so far<br>
 # The data were imported and mapped against their respectivee classses & annotations<br>
